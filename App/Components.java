@@ -26,6 +26,9 @@ public class Components {
     public void changeFont(String fontName, int style, int size) {
       this.setFont(new Font(fontName, style, size));
     }
+    public void changeFontSize(int size){
+      this.changeFont("Arial",Font.BOLD,size);
+    }
 
     public void changeTextColor(Color newColor){
       this.setForeground(newColor);
