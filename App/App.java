@@ -153,36 +153,3 @@ public class App {
   }
 }
 
-// switch (letter.toLowerCase()){
-//       case "b": letter_color = "cyan"; break;
-//       case "i": letter_color = "blue"; break;
-//       case "n": letter_color = "red"; break;
-//       case "g": letter_color = "yellow"; break;
-//       case "o": letter_color = "light_green"; break;
-//     }
-//     colored_circle = "light_" + letter_color;
-//     var bingoLabel = components.new BingoNumber(letter, letter_color);
-//     bingoLabel.changeFont("Arial", Font.BOLD, 64);
-//     bingoLabel.changeTextColor(Color.GRAY);
-//     bingoLane.add(bingoLabel);
-    
-
-//     for (int bingo_Num : rand_Num) {
-//       if(letter == "N" && counter == 2){
-//         numString = "FREE";
-//         font_size = 20;
-//       }
-//       else{
-//         numString = Integer.toString(bingo_Num);
-//         font_size = 50;
-//       }
-//       // numString = Integer.toString(bingo_Num);
-//       var bingoButton = components.new BingoNumber(numString, colored_circle);
-//       bingoButton.changeFont("Arial", Font.BOLD, font_size);
-//       bingoButton.changeTextColor(Color.GRAY);
-//       bingoButton.coloredBorder(5);
-//       bingoLane.add(bingoButton);
-//       counter += 1;
-//     for (int bingo_Num : rand_Num) {
-//       
-// }
