@@ -30,7 +30,7 @@ public class App {
     var bingoBoard = new JPanel(new GridLayout(1, 5));
     var dims = new Dimension(550, 650);
 
-    String[] sampleButtonLabels = { "1", "3", "7", "9", "15" };
+    // String[] sampleButtonLabels = { "1", "3", "7", "9", "15" };
     // NumberGen genNum = new NumberGen();
     int[] b_randNumbers = NumberGen.getRandomNumberInRange(1, 15, 5);
     int[] i_randNumbers = NumberGen.getRandomNumberInRange(16, 30, 5);
@@ -41,12 +41,15 @@ public class App {
     appWindow.setSize(dims);
     appWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    var titlePanel = new JPanel(new GridLayout(1, 5));
+    var titlePanel = new JPanel(new GridLayout(5, 1));
     JLabel[] bingoLabels = { new JLabel("B"), new JLabel("I"), new JLabel("N"), new JLabel("G"), new JLabel("O"), };
 
     for (var bingoLabel : bingoLabels) {
       titlePanel.add(bingoLabel);
     }
+
+    // Dimension titlePanelSize = new Dimension(550, 50);  // Set the width and height you want for the titlePanel
+    // titlePanel.setPreferredSize(titlePanelSize);
 
     appPanel.add(titlePanel);
 
