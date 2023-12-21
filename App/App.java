@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import javax.swing.SwingConstants;
+import java.awt.Font;
 /**
  * App
  */
@@ -26,7 +28,7 @@ public class App {
 
   static void buildGUI() {
     var appWindow = new JFrame("BINGO Game!");
-    var appPanel = new JPanel(new GridLayout(2, 1));
+    var appPanel = new JPanel(new GridLayout(1, 1));
     var bingoBoard = new JPanel(new GridLayout(1, 5));
     var dims = new Dimension(550, 650);
 
@@ -41,20 +43,20 @@ public class App {
     appWindow.setSize(dims);
     appWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    var titlePanel = new JPanel(new GridLayout(1, 5));
-    JLabel[] bingoLabels = { new JLabel("B"), new JLabel("I"), new JLabel("N"), new JLabel("G"), new JLabel("O"), };
+    // var titlePanel = new JPanel(new GridLayout(1, 5));
+    // JLabel[] bingoLabels = { new JLabel("B"), new JLabel("I"), new JLabel("N"), new JLabel("G"), new JLabel("O"), };
 
-    for (var bingoLabel : bingoLabels) {
-      titlePanel.add(bingoLabel);
-    }
+    // for (var bingoLabel : bingoLabels) {
+    //   titlePanel.add(bingoLabel);
+    // }
 
-    appPanel.add(titlePanel);
+    // appPanel.add(titlePanel);
 
-    bingoBoard.add(buildBingoLane(b_randNumbers));
-    bingoBoard.add(buildBingoLane(i_randNumbers));
-    bingoBoard.add(buildBingoLane(n_randNumbers));
-    bingoBoard.add(buildBingoLane(g_randNumbers));
-    bingoBoard.add(buildBingoLane(o_randNumbers));
+    bingoBoard.add(buildBingoLane(b_randNumbers, "B"));
+    bingoBoard.add(buildBingoLane(i_randNumbers, "I"));
+    bingoBoard.add(buildBingoLane(n_randNumbers, "N"));
+    bingoBoard.add(buildBingoLane(g_randNumbers, "G"));
+    bingoBoard.add(buildBingoLane(o_randNumbers, "O"));
 
     appPanel.add(bingoBoard);
 
@@ -63,9 +65,12 @@ public class App {
     appWindow.setVisible(true);
   }
 
-  static JPanel buildBingoLane(int[] rand_Num) {
+  static JPanel buildBingoLane(int[] rand_Num, String letter) {
     var bingoLane = new JPanel(new GridLayout(5, 1));
     var components = new Components();
+
+    JLabel label = new JLabel(letter, SwingConstants.CENTER);
+    label.setFont(new Font("Sergoe UI", Font.BOLD, 30))
 
     for (int bingo_Num : rand_Num) {
       var bingoButton = components.new BingoNumber(bingo_Num);
