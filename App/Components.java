@@ -7,10 +7,11 @@ import java.awt.Color;
 
 public class Components {
   class BingoNumber extends JButton {
-    private Color circleColor = Color.GRAY;
+    private Color circleColor = Color.BLUE;
 
-    public BingoNumber(String label) {
-      super(label);
+    public BingoNumber(int label) {
+      // super(label);
+      super(Integer.toString(label));
     }
 
     @Override

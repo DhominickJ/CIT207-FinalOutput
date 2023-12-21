@@ -1,5 +1,7 @@
 package App;
 
+// Custom packages to import NumberGen java file
+
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -29,6 +31,12 @@ public class App {
     var dims = new Dimension(550, 650);
 
     String[] sampleButtonLabels = { "1", "3", "7", "9", "15" };
+    // NumberGen genNum = new NumberGen();
+    int[] b_randNumbers = NumberGen.getRandomNumberInRange(1, 15, 5);
+    int[] i_randNumbers = NumberGen.getRandomNumberInRange(16, 30, 5);
+    int[] n_randNumbers = NumberGen.getRandomNumberInRange(31, 45, 5);
+    int[] g_randNumbers = NumberGen.getRandomNumberInRange(46, 60, 5);
+    int[] o_randNumbers = NumberGen.getRandomNumberInRange(61, 75, 5);
 
     appWindow.setSize(dims);
     appWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -42,11 +50,11 @@ public class App {
 
     appPanel.add(titlePanel);
 
-    bingoBoard.add(buildBingoLane(sampleButtonLabels));
-    bingoBoard.add(buildBingoLane(sampleButtonLabels));
-    bingoBoard.add(buildBingoLane(sampleButtonLabels));
-    bingoBoard.add(buildBingoLane(sampleButtonLabels));
-    bingoBoard.add(buildBingoLane(sampleButtonLabels));
+    bingoBoard.add(buildBingoLane(b_randNumbers));
+    bingoBoard.add(buildBingoLane(i_randNumbers));
+    bingoBoard.add(buildBingoLane(n_randNumbers));
+    bingoBoard.add(buildBingoLane(g_randNumbers));
+    bingoBoard.add(buildBingoLane(o_randNumbers));
 
     appPanel.add(bingoBoard);
 
@@ -55,12 +63,12 @@ public class App {
     appWindow.setVisible(true);
   }
 
-  static JPanel buildBingoLane(String[] buttonLabels) {
+  static JPanel buildBingoLane(int[] rand_Num) {
     var bingoLane = new JPanel(new GridLayout(5, 1));
     var components = new Components();
 
-    for (String label : buttonLabels) {
-      var bingoButton = components.new BingoNumber(label);
+    for (int bingo_Num : rand_Num) {
+      var bingoButton = components.new BingoNumber(bingo_Num);
       bingoLane.add(bingoButton);
     }
 

@@ -1,4 +1,4 @@
-// package App;
+package App;
 
 import java.util.Collections;
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ public class NumberGen {
 
     // A better implementation of duplicate checking and randomized number generation compared to my implementation.
     // https://stackoverflow.com/questions/1519736/random-shuffling-of-an-array answered by PhiLho
-    private static int[] getRandomNumberInRange(int min, int max, int total) { // Modified for the range and total number checker
+    public static int[] getRandomNumberInRange(int min, int max, int total) { // Modified for the range and total number checker
         // It will create a List object that will store the arrawList so that we can use the add function.
         List<Integer> numbers = new ArrayList<>();
         for (int i = min; i <= max; i++) {
