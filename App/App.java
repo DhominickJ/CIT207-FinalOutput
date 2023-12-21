@@ -35,22 +35,30 @@ public class App {
     var dims = new Dimension(550, 650);
 
     // String[] sampleButtonLabels = { "1", "3", "7", "9", "15" };
-    // NumberGen genNum = new NumberGen();
-    int[] b_randNumbers = NumberGen.getRandomNumberInRange(1, 15, 5);
-    int[] i_randNumbers = NumberGen.getRandomNumberInRange(16, 30, 5);
-    int[] n_randNumbers = NumberGen.getRandomNumberInRange(31, 45, 5);
-    int[] g_randNumbers = NumberGen.getRandomNumberInRange(46, 60, 5);
-    int[] o_randNumbers = NumberGen.getRandomNumberInRange(61, 75, 5);
+    String[] bButtons = intArrToStringArr(NumberGen.getRandomNumberInRange(1, 15, 5));
+    String[] iButtons = intArrToStringArr(NumberGen.getRandomNumberInRange(16, 30, 5));
+    String[] nButtons = intArrToStringArr(NumberGen.getRandomNumberInRange(31, 45, 5));
+    String[] gButtons = intArrToStringArr(NumberGen.getRandomNumberInRange(46, 60, 5));
+    String[] oButtons = intArrToStringArr(NumberGen.getRandomNumberInRange(61, 75, 5));
 
     appWindow.setSize(dims);
     appWindow.setResizable(false);
     appWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    bingoBoard.add(buildBingoLane(b_randNumbers, "B"));
-    bingoBoard.add(buildBingoLane(i_randNumbers, "I"));
-    bingoBoard.add(buildBingoLane(n_randNumbers, "N"));
-    bingoBoard.add(buildBingoLane(g_randNumbers, "G"));
-    bingoBoard.add(buildBingoLane(o_randNumbers, "O"));
+    var titlePanel = new JPanel(new GridLayout(1, 5));
+    JLabel[] bingoLabels = { new JLabel("B"), new JLabel("I"), new JLabel("N"), new JLabel("G"), new JLabel("O"), };
+
+    for (var bingoLabel : bingoLabels) {
+      titlePanel.add(bingoLabel);
+    }
+
+    appPanel.add(titlePanel);
+
+    bingoBoard.add(buildBingoLane(bButtons));
+    bingoBoard.add(buildBingoLane(bButtons));
+    bingoBoard.add(buildBingoLane(bButtons));
+    bingoBoard.add(buildBingoLane(bButtons));
+    bingoBoard.add(buildBingoLane(bButtons));
 
     // appPanel.add(bingoBoard);
 
@@ -102,5 +110,9 @@ public class App {
     }
 
     return bingoLane;
+  }
+
+  static String[] intArrToStringArr(int[] intArr) {
+    return Arrays.stream(intArr).mapToObj(String::valueOf).toArray(String[]::new);
   }
 }
