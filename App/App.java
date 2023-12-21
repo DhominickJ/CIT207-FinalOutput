@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import App.Components.BingoNumber;
+
 // import App.Components.BingoNumber;
 
 import javax.swing.JButton;
@@ -76,7 +78,7 @@ public class App {
     String colored_circle;
     int counter = 0;
     int font_size = 0;
-    System.out.println(letter);
+    // System.out.println(letter);
     switch (letter.toLowerCase()){
       case "b": letter_color = "cyan"; break;
       case "i": letter_color = "blue"; break;
@@ -117,9 +119,10 @@ public class App {
     // }
 
     for (int bingo_Num : rand_Num) {
-      BingoNumber bingoButton = new BingoNumber;
+      // components.new BingoNumber bingoButton = new BingoNumber();
+      BingoNumber bingoButton;
       if(letter.equals("N") && counter == 2){
-        bingoButton = components.new BingoNumber("FREE", "gray");
+        bingoButton = components.new BingoNumber("FREE", "FREE");
       }
       else{
         bingoButton = components.new BingoNumber(Integer.toString(bingo_Num), "gray");

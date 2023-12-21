@@ -21,6 +21,7 @@ public class Components {
       this.setFont(new Font("Arial", color.equals("FREE") ? Font.BOLD : Font.PLAIN, color.equals("FREE") ? 20 : 50));
       this.setForeground(Color.GRAY);
       this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
+      this.color = color;
     }
 
     public void changeFont(String fontName, int style, int size) {
