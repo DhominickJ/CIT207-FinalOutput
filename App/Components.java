@@ -1,5 +1,6 @@
 package App;
 
+import javax.lang.model.type.NullType;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,20 +9,23 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
-import java.awt.*;
 
 public class Components {
   public class BingoNumber extends JButton {
     // private int number;
     private String color;
-    private String num_letter;
-    private ActionListener actionListener;
 
     public BingoNumber(String text, String color) {
       super(text);
-      this.setFont(new Font("Arial", Font.BOLD, text.equals("FREE") ? 20 : 50));
+      int counter = 0;
+      this.setFont(new Font("Impact", Font.PLAIN, text.equals("FREE") ? 20 : 50));
       this.setForeground(stringToColor(color));
-      this.setBorder(BorderFactory.createLineBorder(stringToColor(color), 5));
+      if(counter == 0){
+        this.setBackground(getBackground());
+      } else {
+        this.setBorder(BorderFactory.createLineBorder(stringToColor(color), 5));
+      }
+
       Dimension size = getPreferredSize();
       size.width = size.height = Math.max(size.width, size.height);
       setPreferredSize(size);
@@ -33,11 +37,10 @@ public class Components {
       this.setFont(new Font(fontName, style, size));
     }
     public void changeFontSize(int size){
-      this.changeFont("Arial",Font.BOLD,size);
+      this.changeFont("Impact",Font.BOLD,size);
     }
 
     public void changeTextColor(String color){
-      // this.setForeground(newColor);
       this.setForeground(stringToColor(color));
     }
 
@@ -48,9 +51,9 @@ public class Components {
     @Override
     protected void paintComponent(Graphics g) {
       int diameter = Math.min(getSize().width, getSize().height) - 20;
-      int rect_size = Math.min(getSize().width, getSize().height);
-      int x_rect = (getSize().width - rect_size) / 2;
-      int y_rect = (getSize().height - rect_size) / 2;
+      // int rect_size = Math.min(getSize().width, getSize().height);
+      // int x_rect = (getSize().width - rect_size) / 2;
+      // int y_rect = (getSize().height - rect_size) / 2;
       int x = (getSize().width - diameter) / 2;
       int y = (getSize().height - diameter) / 2;
 
@@ -148,7 +151,7 @@ public class Components {
         case "light_green": return new Color(0, 250, 154);
         case "light_light_green": return new Color(0, 255, 153);
         case "gold": return new Color(229, 184, 11);
-        default: return Color.BLACK;
+        default: return null;
       }
     }
 
