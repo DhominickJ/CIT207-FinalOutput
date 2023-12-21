@@ -129,7 +129,6 @@ public class App {
         bingoButton = components.new BingoNumber(Integer.toString(bingo_Num), colored_circle);
       }
       
-      final String final_colored_circle = colored_circle;
       bingoButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -139,9 +138,6 @@ public class App {
           // Change text color to black and border color to gray when selected
           btn.setForeground(Color.lightGray);
           btn.setBackground(Color.GRAY);
-          // btn.setBorderPainted(true);
-          // bingoButton = components.new BingoNumber(Integer.toString(bingo_Num), "gray");
-          // final_colored_circle = "gray";
         }
       });
 
