@@ -28,7 +28,7 @@ public class App {
 
   static void buildGUI() {
     var appWindow = new JFrame("BINGO Game!");
-    var appPanel = new JPanel(new GridLayout(1, 1));
+    // var appPanel = new JPanel(new GridLayout(1, 1));s
     var bingoBoard = new JPanel(new GridLayout(1, 5));
     var dims = new Dimension(550, 650);
 
@@ -58,19 +58,20 @@ public class App {
     bingoBoard.add(buildBingoLane(g_randNumbers, "G"));
     bingoBoard.add(buildBingoLane(o_randNumbers, "O"));
 
-    appPanel.add(bingoBoard);
+    // appPanel.add(bingoBoard);
 
-    appWindow.add(appPanel);
+    appWindow.add(bingoBoard);
 
     appWindow.setVisible(true);
   }
 
   static JPanel buildBingoLane(int[] rand_Num, String letter) {
-    var bingoLane = new JPanel(new GridLayout(5, 1));
+    var bingoLane = new JPanel(new GridLayout(6, 1));
     var components = new Components();
 
     JLabel label = new JLabel(letter, SwingConstants.CENTER);
-    label.setFont(new Font("Sergoe UI", Font.BOLD, 30))
+    label.setFont(new Font("Sergoe UI", Font.BOLD, 30));
+    bingoLane.add(label);
 
     for (int bingo_Num : rand_Num) {
       var bingoButton = components.new BingoNumber(bingo_Num);
