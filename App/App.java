@@ -79,17 +79,18 @@ public class App {
     int counter = 0;
     int font_size = 0;
     // System.out.println(letter);
-    switch (letter.toLowerCase()){
-      case "b": letter_color = "cyan"; break;
-      case "i": letter_color = "blue"; break;
-      case "n": letter_color = "red"; break;
-      case "g": letter_color = "yellow"; break;
-      case "o": letter_color = "light_green"; break;
+    switch (letter){
+      case "B": letter_color = "cyan"; break;
+      case "I": letter_color = "blue"; break;
+      case "N": letter_color = "red"; break;
+      case "G": letter_color = "yellow"; break;
+      case "O": letter_color = "light_green"; break;
     }
+    System.out.println(letter_color);
     colored_circle = "light_" + letter_color;
     var bingoLabel = components.new BingoNumber(letter, letter_color);
     bingoLabel.changeFont("Arial", Font.BOLD, 64);
-    bingoLabel.changeTextColor(Color.GRAY);
+    bingoLabel.changeTextColor("gray");
     bingoLane.add(bingoLabel);
     
 
@@ -122,19 +123,28 @@ public class App {
       // components.new BingoNumber bingoButton = new BingoNumber();
       BingoNumber bingoButton;
       if(letter.equals("N") && counter == 2){
-        bingoButton = components.new BingoNumber("FREE", "FREE");
+        bingoButton = components.new BingoNumber("FREE", "gold");
       }
       else{
-        bingoButton = components.new BingoNumber(Integer.toString(bingo_Num), "gray");
+        bingoButton = components.new BingoNumber(Integer.toString(bingo_Num), colored_circle);
       }
       
+      final String final_colored_circle = colored_circle;
       bingoButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
           // Handle the button click here
           System.out.println("Button clicked!");
+          JButton btn = (JButton)e.getSource();
+          // Change text color to black and border color to gray when selected
+          btn.setForeground(Color.lightGray);
+          btn.setBackground(Color.GRAY);
+          // btn.setBorderPainted(true);
+          // bingoButton = components.new BingoNumber(Integer.toString(bingo_Num), "gray");
+          // final_colored_circle = "gray";
         }
       });
+
       bingoLane.add(bingoButton);
       counter += 1;
     }
@@ -142,6 +152,37 @@ public class App {
     return bingoLane;
   }
 }
+
+// switch (letter.toLowerCase()){
+//       case "b": letter_color = "cyan"; break;
+//       case "i": letter_color = "blue"; break;
+//       case "n": letter_color = "red"; break;
+//       case "g": letter_color = "yellow"; break;
+//       case "o": letter_color = "light_green"; break;
+//     }
+//     colored_circle = "light_" + letter_color;
+//     var bingoLabel = components.new BingoNumber(letter, letter_color);
+//     bingoLabel.changeFont("Arial", Font.BOLD, 64);
+//     bingoLabel.changeTextColor(Color.GRAY);
+//     bingoLane.add(bingoLabel);
+    
+
+//     for (int bingo_Num : rand_Num) {
+//       if(letter == "N" && counter == 2){
+//         numString = "FREE";
+//         font_size = 20;
+//       }
+//       else{
+//         numString = Integer.toString(bingo_Num);
+//         font_size = 50;
+//       }
+//       // numString = Integer.toString(bingo_Num);
+//       var bingoButton = components.new BingoNumber(numString, colored_circle);
+//       bingoButton.changeFont("Arial", Font.BOLD, font_size);
+//       bingoButton.changeTextColor(Color.GRAY);
+//       bingoButton.coloredBorder(5);
+//       bingoLane.add(bingoButton);
+//       counter += 1;
 //     for (int bingo_Num : rand_Num) {
 //       
 // }
