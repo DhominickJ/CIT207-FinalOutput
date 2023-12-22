@@ -22,10 +22,12 @@ import java.awt.event.*;
  */
 public class App {
 
+  // Invoke to build the GUI on another thread.
   public static void main(String[] args) {
     javax.swing.SwingUtilities.invokeLater(App::buildGUI);
   }
 
+  // Imperatively declare and build the GUI.
   /**
    * Builds and displays the GUI for the BINGO game where it generates numbers and add the numbers generated
    * into a button that will be sent to the helper function to build a lane named buildBingoLane;

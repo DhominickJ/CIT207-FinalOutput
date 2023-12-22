@@ -48,6 +48,7 @@ public class Components {
      * @param style the style of the font (e.g., Font.PLAIN, Font.BOLD, Font.ITALIC)
      * @param size the size of the font
      */
+    // Add convenience functions.
     public void changeFont(String fontName, int style, int size) {
       this.setFont(new Font(fontName, style, size));
     }
@@ -89,7 +90,6 @@ public class Components {
      */
     public void borderStatus(boolean statusBorder) {
       this.statusBorder = statusBorder;
-      // this.repaint();
     }
 
     // Overriding the paintComponent function to fit our design goals.
@@ -128,6 +128,7 @@ public class Components {
       g2d.fill(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size, roundness, roundness));
     }
 
+    // Overriding the paintBorder function to fit our design goals.
     @Override
     protected void paintBorder(Graphics g) {
       super.paintComponent(g);
@@ -159,6 +160,7 @@ public class Components {
       // roundness, roundness));
     }
 
+    // Convenience functions
     public void paintLabel(Graphics g, String color) {
       g.setColor(stringToColor(color));
     }
