@@ -102,7 +102,6 @@ public class Components {
       g2d.fill(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size, roundness, roundness));
       // g.fillRect(x, y, diameter, diameter);
       // g2d.draw(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size, roundness, roundness));
-      
     }
     
   }

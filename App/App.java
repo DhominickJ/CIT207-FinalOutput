@@ -81,6 +81,11 @@ public class App {
         bingoButton = components.new BingoNumber(Integer.toString(bingo_Num), colored_circle);
       }
       
+      // int b_count = 0;
+      // int i_count = 0;
+      // int n_count = 0;
+      // int g_count = 0;
+      // int o_count = 0;
 
       bingoButton.addActionListener(new ActionListener() {
         @Override
@@ -94,6 +99,14 @@ public class App {
           // // Change text color to black and border color to gray when selected
           button.setForeground(Color.lightGray);
           button.setBackground(Color.GRAY);
+          // switch(letter){
+          //   case "B" : b_count =+ 1; break;
+          //   case "I" : i_count =+ 1; break;
+          //   case "N" : n_count =+ 1; break;
+          //   case "G" : g_count =+ 1; break;
+          //   case "O" : g_count =+ 1; break;
+          // }
+          
           // // ((CustomButton)btn).borderStatus(false);
           // btn.borderStatus(false);
 
@@ -104,7 +117,43 @@ public class App {
       counter += 1;
     }
 
+
     return bingoLane;
   }
 }
+//   public boolean checkBingo(boolean[][] card) {
+//         int size = card.length;
+
+//         // Check rows and columns
+//         for (int i = 0; i < size; i++) {
+//           boolean rowBingo = true;
+//           boolean colBingo = true;
+//           for (int j = 0; j < size; j++) {
+//             if (!card[i][j]) {
+//               rowBingo = false;
+//             }
+//             if (!card[j][i]) {
+//               colBingo = false;
+//             }
+//           }
+//           if (rowBingo || colBingo) {
+//             return true;
+//           }
+//         }
+
+//         // Check diagonals
+//         boolean diagBingo1 = true;
+//         boolean diagBingo2 = true;
+//         for (int i = 0; i < size; i++) {
+//           if (!card[i][i]) {
+//             diagBingo1 = false;
+//           }
+//           if (!card[i][size - i - 1]) {
+//             diagBingo2 = false;
+//           }
+//         }
+
+//         return diagBingo1 || diagBingo2;
+//       }
+// }
 
