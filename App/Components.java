@@ -221,7 +221,6 @@ public class Components {
 
     /**
      * Represents the dimensions of a component or object.
-     * The dimensions are specified as width and height values.
      */
     @Override
     public Dimension getPreferredSize() {
