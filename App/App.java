@@ -22,10 +22,12 @@ import java.awt.event.*;
  */
 public class App {
 
+  // Invoke to build the GUI on another thread.
   public static void main(String[] args) {
     javax.swing.SwingUtilities.invokeLater(App::buildGUI);
   }
 
+  // Imperatively declare and build the GUI.
   static void buildGUI() {
     var appWindow = new JFrame("BINGO Game!");
     var bingoBoard = new JPanel(new GridLayout(1, 5));
@@ -52,6 +54,7 @@ public class App {
     appWindow.setVisible(true);
   }
 
+  // Build a row for each letter of the BINGO word.
   static JPanel buildBingoLane(int[] rand_Num, String letter) {
     var bingoLane = new JPanel(new GridLayout(6, 1));
     var components = new Components();
