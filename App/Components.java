@@ -133,6 +133,7 @@ public class Components {
     protected void paintBorder(Graphics g) {
       super.paintComponent(g);
       int diameter = Math.min(getSize().width, getSize().height) - 20;
+      // Functions used to center the text and buttons to the grid.
       int x = (getSize().width - diameter) / 2;
       int y = (getSize().height - diameter) / 2;
 
@@ -143,10 +144,13 @@ public class Components {
       // g2d.drawRect(x, y, diameter, diameter);
 
       // Enable anti-aliasing
+      // Make the text and borders edges less noticeable
+
+      // Code referenced from: https://stackoverflow.com/questions/779198/how-can-i-set-renderinghints-globally
       g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
       // Draw a rectangle with rounded corners
-      float roundness = 35f; // Adjust this value to change the roundness of the corners'
+      float roundness = 35f; // Adjust this value to change the roundness of the corners
 
       if (getModel().isArmed()) {
         g2d.setColor(Color.lightGray);
@@ -155,9 +159,6 @@ public class Components {
       }
 
       g2d.draw(new RoundRectangle2D.Float(x, y, diameter, diameter, roundness, roundness));
-      // g2d.setStroke(new BasicStroke(thickness));
-      // g2d.fill(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size,
-      // roundness, roundness));
     }
 
     // Convenience functions
@@ -165,6 +166,12 @@ public class Components {
       g.setColor(stringToColor(color));
     }
 
+    /**
+     * Converts a string representation of a color to a Color object.
+     * 
+     * @param color the string representation of the color
+     * @return the Color object corresponding to the given string, or null if no matching color is found
+     */
     private Color stringToColor(String color) {
       switch (color.toLowerCase()) {
         case "black":
@@ -212,6 +219,10 @@ public class Components {
       }
     }
 
+    /**
+     * Represents the dimensions of a component or object.
+     * The dimensions are specified as width and height values.
+     */
     @Override
     public Dimension getPreferredSize() {
       return new Dimension(50, 50);
