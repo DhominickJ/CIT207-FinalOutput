@@ -74,8 +74,8 @@ public class Components {
       int rect_size = Math.min(getSize().width, getSize().height) - 20;
       int x_rect = (getSize().width - rect_size) / 2;
       int y_rect = (getSize().height - rect_size) / 2;
-      int x = (getSize().width - diameter) / 2;
-      int y = (getSize().height - diameter) / 2;
+      // int x = (getSize().width - diameter) / 2;
+      // int y = (getSize().height - diameter) / 2;
 
       Graphics2D g2d = (Graphics2D) g;
 
@@ -96,24 +96,20 @@ public class Components {
         // g.setColor(getBackground());
         g2d.setColor(getBackground());
       }
-
-    if(statusBorder){
       // g2d.setStroke(new BasicStroke(thickness));
       g2d.fill(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size, roundness, roundness));
       // g.fillRect(x, y, diameter, diameter);
       // g2d.draw(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size, roundness, roundness));
     }
     
-  }
 
     @Override
     protected void paintBorder(Graphics g) {
       super.paintComponent(g);
-      if(statusBorder){
         int diameter = Math.min(getSize().width, getSize().height) - 20;
         int rect_size = Math.min(getSize().width, getSize().height) - 10;
-        int x_rect = (getSize().width - rect_size) / 2;
-        int y_rect = (getSize().height - rect_size) / 2;
+        // int x_rect = (getSize().width - rect_size) / 2;
+        // int y_rect = (getSize().height - rect_size) / 2;
         int x = (getSize().width - diameter) / 2;
         int y = (getSize().height - diameter) / 2;
 
@@ -136,12 +132,9 @@ public class Components {
         g2d.setColor(stringToColor(color));
       }
 
-      if(statusBorder){
         g2d.draw(new RoundRectangle2D.Float(x, y, diameter, diameter, roundness, roundness));
-      } 
         // g2d.setStroke(new BasicStroke(thickness));
         // g2d.fill(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size, roundness, roundness));
-        }
       }
 
 
