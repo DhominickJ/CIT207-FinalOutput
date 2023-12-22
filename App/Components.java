@@ -11,46 +11,82 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.*;
 
 public class Components {
+  /**
+   * Represents a custom JButton for a Bingo number.
+   */
   public class BingoNumber extends JButton {
     // private int number;
     private String color;
     private boolean statusBorder = true;
 
     // Override ctor to add additional behavior.
+    /**
+     * Represents a Bingo number component.
+     * Inherits from the superclass and sets the font, color, background, border, and size of the component.
+     * 
+     * @param text The text to be displayed on the component.
+     * @param color The color of the component.
+     */
     public BingoNumber(String text, String color) {
       super(text);
       int counter = 0;
-      this.setFont(new Font("Impact", Font.PLAIN, text.equals("FREE") ? 20 : 50));
+      // Checks the text if it is a FREE so that it adjusts the font accordingly.
+      this.setFont(new Font("Impact", Font.PLAIN, text.equals("FREE") ? 20 : 50)); 
       this.setForeground(stringToColor(color));
-      if (counter == 0) {
-        this.setBackground(getBackground());
-      } else {
-        this.setBorder(BorderFactory.createLineBorder(stringToColor(color), 5));
-      }
 
       Dimension size = getPreferredSize();
-      size.width = size.height = Math.max(size.width, size.height);
+      size.width = size.height = Math.max(size.width, size.height); // Returns the width and height of the button
       setPreferredSize(size);
-      setContentAreaFilled(false);
+      setContentAreaFilled(false); // Implemented for additional features unused but returns error when removed.
       this.color = color;
     }
 
+    /**
+     * Changes the font of the component.
+     * 
+     * @param fontName the name of the font
+     * @param style the style of the font (e.g., Font.PLAIN, Font.BOLD, Font.ITALIC)
+     * @param size the size of the font
+     */
     public void changeFont(String fontName, int style, int size) {
       this.setFont(new Font(fontName, style, size));
     }
 
+    /**
+     * Changes the font size of the component.
+     * 
+     * @param size the new font size to be set
+     */
     public void changeFontSize(int size) {
       this.changeFont("Impact", Font.BOLD, size);
     }
 
+    /**
+     * Changes the color of the component based on the text provided referenced by a function below.
+     * 
+     * @param color to return a color component based on the string; 
+     * referred to the function below for more context
+     */
     public void changeTextColor(String color) {
       this.setForeground(stringToColor(color));
     }
 
+    /**
+     * Sets the colored border of the component for additional feature, however unused at the moment for 
+     * a feature to check if bingo but unimplemented due to time constraints
+     * 
+     * @param size the size of the border
+     */
     public void coloredBorder(int size) {
       this.setBorder(BorderFactory.createLineBorder(stringToColor(color), size));
     }
 
+    /**
+     * Sets the status of the border for this component for additional feature but unused at the moment
+     * for checking if the function is toggled
+     * 
+     * @param statusBorder the status of the border
+     */
     public void borderStatus(boolean statusBorder) {
       this.statusBorder = statusBorder;
       // this.repaint();
@@ -68,6 +104,8 @@ public class Components {
         setBorder(BorderFactory.createStrokeBorder(new BasicStroke(thickness)));
       }
       super.paintComponent(g);
+
+      // Everything below will be used in order to 
       int rect_size = Math.min(getSize().width, getSize().height) - 20;
       int x_rect = (getSize().width - rect_size) / 2;
       int y_rect = (getSize().height - rect_size) / 2;
