@@ -19,6 +19,7 @@ public class Components {
   public class BingoNumber extends JButton {
     // private int number;
     private String color;
+    private boolean statusBorder = true;
 
     public BingoNumber(String text, String color) {
       super(text);
@@ -52,57 +53,107 @@ public class Components {
     public void coloredBorder(int size){
       this.setBorder(BorderFactory.createLineBorder(stringToColor(color), size));
     }
+    public void borderStatus(boolean statusBorder){
+      this.statusBorder = statusBorder;
+      // this.repaint();
+    }
+
 
     @Override
     protected void paintComponent(Graphics g) {
-      int diameter = Math.min(getSize().width, getSize().height) - 20;
-      // int rect_size = Math.min(getSize().width, getSize().height);
-      // int x_rect = (getSize().width - rect_size) / 2;
-      // int y_rect = (getSize().height - rect_size) / 2;
-      int x = (getSize().width - diameter) / 2;
-      int y = (getSize().height - diameter) / 2;
-
-      if (getModel().isArmed()) {
-        g.setColor(Color.lightGray);
-      } else {
-        g.setColor(getBackground());
-      }
-      g.fillRect(x, y, diameter, diameter);
-      super.paintComponent(g);
+    float thickness = 3f;
+    // If statusBorder is false, remove the border
+    if (!statusBorder) {
+        setBorder(null);
+    } else {
+        // If statusBorder is true, set the border to your custom border
+        setBorder(BorderFactory.createStrokeBorder(new BasicStroke(thickness)));
     }
-
-    @Override
-    protected void paintBorder(Graphics g) {
+      super.paintComponent(g);
       int diameter = Math.min(getSize().width, getSize().height) - 20;
-      int rect_size = Math.min(getSize().width, getSize().height);
+      int rect_size = Math.min(getSize().width, getSize().height) - 20;
       int x_rect = (getSize().width - rect_size) / 2;
       int y_rect = (getSize().height - rect_size) / 2;
       int x = (getSize().width - diameter) / 2;
       int y = (getSize().height - diameter) / 2;
 
       Graphics2D g2d = (Graphics2D) g;
-      g2d.setColor(stringToColor(color));
-      float thickness = 3f; // Set the thickness of the border here
-      g2d.setStroke(new BasicStroke(thickness));
+
       // g2d.drawRect(x, y, diameter, diameter);
 
       // Enable anti-aliasing
       g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
       // Draw a rectangle with rounded corners
-      float roundness = 45f; // Adjust this value to change the roundness of the corners
-      g2d.draw(new RoundRectangle2D.Float(x, y, diameter, diameter, roundness, roundness));
+      float roundness = 35f; // Adjust this value to change the roundness of the corners
+      g2d.setColor(stringToColor(color));      
+      // float thickness = 3f; // Set the thickness of the border here
+      g2d.setStroke(new BasicStroke(thickness));
 
-    }
-
-    Shape shape;
-    public boolean contains(int x, int y) {
-      if (shape == null || 
-        !shape.getBounds().equals(getBounds())) {
-        shape = new Ellipse2D.Float(0, 0, getWidth(), getHeight());
+      if (getModel().isArmed()) {
+        g2d.setColor(Color.lightGray);
+      } else {
+        // g.setColor(getBackground());
+        g2d.setColor(getBackground());
       }
-      return shape.contains(x, y);
+
+    if(statusBorder){
+      // g2d.setStroke(new BasicStroke(thickness));
+      g2d.fill(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size, roundness, roundness));
+      // g.fillRect(x, y, diameter, diameter);
+      // g2d.draw(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size, roundness, roundness));
+      
     }
+    
+  }
+
+    @Override
+    protected void paintBorder(Graphics g) {
+      super.paintComponent(g);
+      if(statusBorder){
+        int diameter = Math.min(getSize().width, getSize().height) - 20;
+        int rect_size = Math.min(getSize().width, getSize().height) - 10;
+        int x_rect = (getSize().width - rect_size) / 2;
+        int y_rect = (getSize().height - rect_size) / 2;
+        int x = (getSize().width - diameter) / 2;
+        int y = (getSize().height - diameter) / 2;
+
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(stringToColor(color));
+        float thickness = 3f; // Set the thickness of the border here
+        g2d.setStroke(new BasicStroke(thickness));
+        // g2d.drawRect(x, y, diameter, diameter);
+
+        // Enable anti-aliasing
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        // Draw a rectangle with rounded corners
+        float roundness = 35f; // Adjust this value to change the roundness of the corners'
+
+      if (getModel().isArmed()) {
+        g2d.setColor(Color.lightGray);
+      }
+      else{
+        g2d.setColor(stringToColor(color));
+      }
+
+      if(statusBorder){
+        g2d.draw(new RoundRectangle2D.Float(x, y, diameter, diameter, roundness, roundness));
+      } 
+        // g2d.setStroke(new BasicStroke(thickness));
+        // g2d.fill(new RoundRectangle2D.Float(x_rect, y_rect, rect_size, rect_size, roundness, roundness));
+        }
+      }
+
+
+    // Shape shape;
+    // public boolean contains(int x, int y) {
+    //   if (shape == null || 
+    //     !shape.getBounds().equals(getBounds())) {
+    //     shape = new Ellipse2D.Float(0, 0, getWidth(), getHeight());
+    //   }
+    //   return shape.contains(x, y);
+    // }
 
       // g.setColor(stringToColor(color));
       // g.drawOval(x, y, diameter, diameter);
