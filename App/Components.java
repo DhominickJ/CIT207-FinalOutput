@@ -1,6 +1,6 @@
 package App;
 
-import javax.lang.model.type.NullType;
+// import javax.lang.model.type.NullType;
 import javax.swing.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,6 +9,11 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.RoundRectangle2D;
+import java.awt.Shape;
+import java.awt.*;
+// import java.shape.Ellipse2D;
 
 public class Components {
   public class BingoNumber extends JButton {
@@ -62,7 +67,7 @@ public class Components {
       } else {
         g.setColor(getBackground());
       }
-      g.fillOval(x, y, diameter, diameter);
+      g.fillRect(x, y, diameter, diameter);
       super.paintComponent(g);
     }
 
@@ -79,11 +84,28 @@ public class Components {
       g2d.setColor(stringToColor(color));
       float thickness = 3f; // Set the thickness of the border here
       g2d.setStroke(new BasicStroke(thickness));
-      g2d.drawOval(x, y, diameter, diameter);
+      // g2d.drawRect(x, y, diameter, diameter);
+
+      // Enable anti-aliasing
+      g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+      // Draw a rectangle with rounded corners
+      float roundness = 45f; // Adjust this value to change the roundness of the corners
+      g2d.draw(new RoundRectangle2D.Float(x, y, diameter, diameter, roundness, roundness));
+
+    }
+
+    Shape shape;
+    public boolean contains(int x, int y) {
+      if (shape == null || 
+        !shape.getBounds().equals(getBounds())) {
+        shape = new Ellipse2D.Float(0, 0, getWidth(), getHeight());
+      }
+      return shape.contains(x, y);
+    }
 
       // g.setColor(stringToColor(color));
       // g.drawOval(x, y, diameter, diameter);
-    }
 
     // @Override
     // public boolean contains(int x, int y) {
